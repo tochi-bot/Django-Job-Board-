@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # The EmployerProfile model extends the User model to store additional information specific to employers.
 class EmployerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # Links to the User model, ensuring a one-to-one relationship.
-    company_name = models.CharField(max_length=255)  # Stores the name of the employer's company.
+    company_name = models.CharField(max_length=255, unique=True)  # Stores the name of the employer's company.
     company_description = models.TextField()  # Stores a detailed description of the employer's company.
 
 # The JobSeekerProfile model extends the User model to store additional information specific to job seekers.

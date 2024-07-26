@@ -31,7 +31,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['django-job-board.herokuapp.com',
     'localhost',
-    '8000-tochibot-djangojobboard-51hlrq7hots.ws.codeinstitute-ide.net',]
+    '8000-tochibot-djangojobboard-51hlrq7hots.ws.codeinstitute-ide.net',
+    'jango-job-board-bc5be9075c6b.herokuapp.com']
 
 
 # Application definition

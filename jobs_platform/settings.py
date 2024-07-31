@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'jobs',
     'employers',
+    'job_seeker_profiles',
     'messaging',
 
 ]

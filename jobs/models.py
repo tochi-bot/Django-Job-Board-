@@ -3,26 +3,23 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# The EmployerProfile model extends the User model to store additional information specific to employers.
-class EmployerProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="jobs_employer_profile")  # Links to the User model, ensuring a one-to-one relationship.
-    company_name = models.CharField(max_length=255, unique=True)  # Stores the name of the employer's company.
-    website = models.URLField()  # Stores the URL of the employer's website.
-    description = models.TextField()  # Stores a detailed description of the employer's company.
 
-    def __str__(self):
-        return self.company_name  # Returns the company name when the object is printed.
-
-
-# The JobSeekerProfile model extends the User model to store additional information specific to job seekers.
 class JobSeekerProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="job_seeker_profile")  # Links to the User model, ensuring a one-to-one relationship.
-    resume = models.FileField(upload_to='resumes/')  # Allows job seekers to upload their resume.
-    skills = models.TextField() # Stores a list of the job seeker's skills.
-    
-    def __str__(self):
-        return self.user.username 
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='job_seeker_profile_from_jobs')
+    resume = models.FileField(upload_to='resumes/')
+    skills = models.TextField()
 
+    def __str__(self):
+        return self.user.username
+
+class EmployerProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='employer_profile')
+    company_name = models.CharField(max_length=255, unique=True)
+    website = models.URLField()
+    description = models.TextField()
+
+    def __str__(self):
+        return self.company_name
 
 # The JobListing model represents a job post created by an employer.
 class JobListing(models.Model):

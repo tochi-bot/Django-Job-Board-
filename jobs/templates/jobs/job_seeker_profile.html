@@ -9,8 +9,8 @@
     {% for application in applications %} <!-- Loops through each application in the applications queryset -->
       <li>
         <!-- Link to the job listing detail page, displaying the job title and the application status -->
-        <a href="{% url 'job_listing_detail' application.job_listing.id %}">{{ application.job_listing.title }}</a>
-        - Status: {{ application.status }}
+        <a href="{% url 'job_listing_detail' application.job_listing.id %}">{{ application.job_listings.title }}</a>
+        - Status: {{ Applications.status }}
       </li>
     {% endfor %}
   </ul>

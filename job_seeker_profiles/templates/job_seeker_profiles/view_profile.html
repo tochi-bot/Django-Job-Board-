@@ -1,0 +1,9 @@
+{% extends 'base.html' %} <!-- Extends the base template -->
+
+{% block content %} <!-- Defines the content block that will be inserted into the base template -->
+<h2>{{ profile.user.username }}'s Profile</h2> <!-- Displays the username of the job seeker -->
+
+<p>Skills: {{ profile.skills }}</p> <!-- Displays the skills of the job seeker -->
+
+<a href="{% url 'edit_profile' %}">Edit Profile</a> <!-- Link to the edit profile page -->
+{% endblock %} <!-- Ends the content block -->

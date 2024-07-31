@@ -20,3 +20,5 @@ def employer_profile_detail(request, user_id):
     profile = get_object_or_404(EmployerProfile, user_id=user_id)
     # Render the 'employer_profile_detail.html' template with the retrieved profile
     return render(request, 'employers/employer_profile_detail.html', {'profile': profile})
+
+

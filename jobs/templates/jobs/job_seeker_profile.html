@@ -1,0 +1,17 @@
+{% extends "base.html" %} <!-- Extends the base template -->
+
+{% block content %} <!-- Defines the content block that will be inserted into the base template -->
+  <h2>{{ job_seeker.user.username }}</h2> <!-- Displays the username of the job seeker -->
+  <p>Skills: {{ job_seeker.skills }}</p> <!-- Displays the skills of the job seeker -->
+  
+  <h3>Applications</h3> <!-- Header for the list of applications -->
+  <ul>
+    {% for application in applications %} <!-- Loops through each application in the applications queryset -->
+      <li>
+        <!-- Link to the job listing detail page, displaying the job title and the application status -->
+        <a href="{% url 'job_listing_detail' application.job_listing.id %}">{{ application.job_listing.title }}</a>
+        - Status: {{ application.status }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %} <!-- Ends the content block -->

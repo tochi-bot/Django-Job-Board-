@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required
 from .models import EmployerProfile, JobSeekerProfile, JobListing, Application
 from .forms import JobListingForm, ApplicationForm
 
+# View for the homepage
+def index(request):
+    return render(request, 'jobs/index.html')
+
 # View for listing all job postings
 def job_listings(request):
     jobs = JobListing.objects.all()
@@ -21,7 +25,7 @@ def apply_for_job(request, job_id):
         form = ApplicationForm(request.POST)
         if form.is_valid():
             application = form.save(commit=False)
-            application.job_seeker = request.user
+            application.job_seeker = JobSeekerProfile.objects.get(user=request.user)
             application.job_listing = job
             application.save()
             return redirect('job_listing_detail', job_id=job.id)
@@ -32,12 +36,12 @@ def apply_for_job(request, job_id):
 # View for employer profile
 def employer_profile(request, employer_id):
     employer = get_object_or_404(EmployerProfile, user__id=employer_id)
-    job_listings = JobListing.objects.filter(employer=employer.user)
+    job_listings = JobListing.objects.filter(employer=employer)
     return render(request, 'jobs/employer_profile.html', {'employer': employer, 'job_listings': job_listings})
 
 # View for job seeker profile
 @login_required
 def job_seeker_profile(request):
     job_seeker = get_object_or_404(JobSeekerProfile, user=request.user)
-    applications = Application.objects.filter(job_seeker=job_seeker.user)
+    applications = Application.objects.filter(job_seeker=job_seeker)
     return render(request, 'jobs/job_seeker_profile.html', {'job_seeker': job_seeker, 'applications': applications})

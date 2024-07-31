@@ -1,0 +1,16 @@
+<!-- messaging/templates/messaging/send_message.html -->
+
+<!-- Heading for the Send Message form -->
+<h2>Send Message</h2>
+
+<!-- Form to send a message -->
+<form method="post">
+    <!-- CSRF token for security -->
+    {% csrf_token %}
+    
+    <!-- Render the form fields as paragraphs -->
+    {{ form.as_p }}
+    
+    <!-- Submit button for the form -->
+    <button type="submit">Send</button>
+</form>

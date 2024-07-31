@@ -1,6 +1,8 @@
 # Import necessary modules from Django
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from .models import JobSeekerProfile
+from .forms import JobSeekerProfileForm
 
 # Import the JobSeekerProfile model
 from .models import JobSeekerProfile
@@ -37,3 +39,9 @@ def edit_profile(request):
     
     # Render the edit_profile template with the form context
     return render(request, 'job_seeker_profiles/edit_profile.html', {'form': form})
+
+
+@login_required
+def view_profile(request):
+    profile, created = JobSeekerProfile.objects.get_or_create(user=request.user)
+    return render(request, 'job_seeker_profiles/view_profile.html', {'profile': profile})

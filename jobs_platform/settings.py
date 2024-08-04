@@ -34,7 +34,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG should be False in production for security
-DEBUG = True
+DEBUG = False
 
 # Allowed hosts for the application
 ALLOWED_HOSTS = [

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <h2>{{ about.title }}</h2>
+            {{ about.content | safe }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-right">
+          <!-- Updated on field goes in here -->
+    
+          <p class="text-end"><em>Updated on: {{ about.updated_on }}</em></p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 my-5">
+            <h2>About Django Jobs!</h2>
+            <p>Welcome to Django Jobs Board, your platform destination for job seekers 
+               and employers alike. Our mission is to bridge the gap between talented professionals
+               and top employers, facilitating meaningful career opportunities and helping businesses
+               grow with the right talent.</p>
+            <p>We are dedicated to providing a reliable and efficient platform that connects job seekers 
+               and employers. Our team is constantly working to improve our services and bring you the best
+               possible experience. We value your feedback and strive to create a community where everyone can thrive.</p>
+
+            <form method="post">
+                {{ contact_form | crispy }}
+                {% csrf_token %}
+                <button class="btn btn-secondary"
+                type="submit">Submit</button>
+            </form>
+            
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -2,11 +2,13 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 
 class JobSeekerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='job_seeker_profile_from_jobs')
-    resume = models.FileField(upload_to='resumes/')
+    profile_image = CloudinaryField('image', blank=True, null=True)
+    resume = models.FileField(upload_to='resumes/',blank=True, null=True)
     skills = models.TextField()
 
     def __str__(self):

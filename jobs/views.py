@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import JobSeekerProfile, EmployerProfile, JobListing, Message, Application
@@ -48,10 +47,10 @@ def employer_profile(request, employer_id):
 # View for job seeker profile
 @login_required
 def job_seeker_profile(request):
-    job_seeker = get_object_or_404(JobSeekerProfile, user=request.user)
+    user = request.user  # Get the User instance
+    job_seeker, created = JobSeekerProfile.objects.get_or_create(user=user)
     applications = Application.objects.filter(job_seeker=job_seeker)
     return render(request, 'jobs/job_seeker_profile.html', {'job_seeker': job_seeker, 'applications': applications})
-
 
 @login_required
 def chat(request, job_listing_id, receiver_id):
@@ -75,8 +74,6 @@ def chat(request, job_listing_id, receiver_id):
 
     return render(request, 'jobs/chat.html', {'job_listing': job_listing, 'receiver': receiver, 'messages': messages, 'form': form})
 
-
-
 @receiver(post_save, sender=Application)
 def send_application_notification(sender, instance, created, **kwargs):
     if created:
@@ -92,4 +89,3 @@ def send_application_notification(sender, instance, created, **kwargs):
             user=employer,
             message=f'You have a new application for your job listing: {job_listing.title}.'
         )
-

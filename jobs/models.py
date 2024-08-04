@@ -45,3 +45,16 @@ class Application(models.Model):
 
     def __str__(self):
         return f"{self.job_seeker} applied for {self.job_listing}"  # Returns a string representation of the application.
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Message(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="jobs_sent_messages")
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="jobs_received_messages")
+    job_listing = models.ForeignKey(JobListing, on_delete=models.CASCADE, related_name="jobs_messages")
+    content = models.TextField()
+    sent_at = models.DateTimeField(auto_now_add=True)

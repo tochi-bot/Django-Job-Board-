@@ -34,7 +34,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG should be False in production for security
-DEBUG = False
+DEBUG = True
 
 # Allowed hosts for the application
 ALLOWED_HOSTS = [
@@ -127,10 +127,17 @@ WSGI_APPLICATION = 'jobs_platform.wsgi.application'
 #    }
 # }
 
+
 # Use dj_database_url to parse the database URL from environment variables
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+# Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Specifies Django to use an SMTP server for sending mail
+EMAIL_HOST = 'smtp.gmail.com'  # Defines the host to use for sending email
+EMAIL_PORT = 587  # Port to use for the SMTP server (587 is commonly used for TLS)
+EMAIL_USE_TLS = True  # Enable TLS security, which is required for connecting to Gmail
 
 # CSRF trusted origins for added security
 CSRF_TRUSTED_ORIGINS = [

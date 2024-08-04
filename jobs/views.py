@@ -1,8 +1,14 @@
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import JobSeekerProfile, EmployerProfile, JobListing, Application
+from .models import JobSeekerProfile, EmployerProfile, JobListing, Message, Application
 from .forms import JobListingForm, ApplicationForm
+from django.contrib.auth.models import User
+from .forms import MessageForm
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.mail import send_mail
+
 # View for the homepage
 def index(request):
     return render(request, 'jobs/index.html')
@@ -45,3 +51,45 @@ def job_seeker_profile(request):
     job_seeker = get_object_or_404(JobSeekerProfile, user=request.user)
     applications = Application.objects.filter(job_seeker=job_seeker)
     return render(request, 'jobs/job_seeker_profile.html', {'job_seeker': job_seeker, 'applications': applications})
+
+
+@login_required
+def chat(request, job_listing_id, receiver_id):
+    job_listing = get_object_or_404(JobListing, id=job_listing_id)
+    receiver = get_object_or_404(User, id=receiver_id)
+    messages = Message.objects.filter(job_listing=job_listing, sender=request.user, receiver=receiver) | \
+               Message.objects.filter(job_listing=job_listing, sender=receiver, receiver=request.user)
+    messages = messages.order_by('sent_at')
+
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = request.user
+            message.receiver = receiver
+            message.job_listing = job_listing
+            message.save()
+            return redirect('chat', job_listing_id=job_listing.id, receiver_id=receiver.id)
+    else:
+        form = MessageForm()
+
+    return render(request, 'jobs/chat.html', {'job_listing': job_listing, 'receiver': receiver, 'messages': messages, 'form': form})
+
+
+
+@receiver(post_save, sender=Application)
+def send_application_notification(sender, instance, created, **kwargs):
+    if created:
+        job_listing = instance.job_listing
+        employer = job_listing.employer
+        subject = 'New Job Application'
+        message = f'You have a new application for your job listing: {job_listing.title}.'
+        email_from = 'noreply@jobboard.com'
+        recipient_list = [employer.email]
+        send_mail(subject, message, email_from, recipient_list)
+
+        Notification.objects.create(
+            user=employer,
+            message=f'You have a new application for your job listing: {job_listing.title}.'
+        )
+

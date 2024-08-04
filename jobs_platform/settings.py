@@ -13,93 +13,111 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+
+# Import environment variables from env.py if it exists
 if os.path.isfile('env.py'):
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR is the directory containing manage.py
 BASE_DIR = Path(__file__).resolve().parent.parent
-TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
+
+# Directory for template files
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# Fetch the secret key from environment variables for security
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG should be False in production for security
+DEBUG = False
 
-ALLOWED_HOSTS = ['django-job-board.herokuapp.com',
+# Allowed hosts for the application
+ALLOWED_HOSTS = [
+    'django-job-board.herokuapp.com',
     'localhost',
     '8000-tochibot-djangojobboard-51hlrq7hots.ws.codeinstitute-ide.net',
-    'jango-job-board-bc5be9075c6b.herokuapp.com']
-
+    'jango-job-board-bc5be9075c6b.herokuapp.com'
+]
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'cloudinary_storage',
-    'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'crispy_forms',
-    'crispy_bootstrap5',
-    'django_summernote',
-    'cloudinary',
-    'about',
-    'jobs',
-    'employers',
-    'job_seeker_profiles',
-    'messaging',
-
+    'django.contrib.admin',  # Admin site
+    'django.contrib.auth',  # Authentication system
+    'django.contrib.contenttypes',  # Content type system
+    'django.contrib.sessions',  # Session framework
+    'django.contrib.messages',  # Messaging framework
+    'cloudinary_storage',  # Cloudinary storage for static and media files
+    'django.contrib.staticfiles',  # Static file management
+    'django.contrib.sites',  # Sites framework
+    'allauth',  # Allauth for authentication
+    'allauth.account',  # Allauth account management
+    'allauth.socialaccount',  # Allauth social account management
+    'crispy_forms',  # Crispy forms for better form handling
+    'crispy_bootstrap5',  # Bootstrap5 template pack for Crispy forms
+    'django_summernote',  # Summernote WYSIWYG editor
+    'cloudinary',  # Cloudinary integration
+    'about',  # About app
+    'jobs',  # Jobs app
+    'employers',  # Employers app
+    'job_seeker_profiles',  # Job seeker profiles app
+    'messaging',  # Messaging app
 ]
-CRISPY_TEMPLATE_PACK = 'bootstrap5' 
 
+# Crispy forms template pack
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# Site ID for the sites framework
 SITE_ID = 1
+
+# URL to redirect to after login
 LOGIN_REDIRECT_URL = '/'
+
+# URL to redirect to after logout
 LOGOUT_REDIRECT_URL = '/'
 
+# Middleware configuration
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',
+    'django.middleware.security.SecurityMiddleware',  # Security middleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise for serving static files
+    'django.contrib.sessions.middleware.SessionMiddleware',  # Session middleware
+    'django.middleware.common.CommonMiddleware',  # Common middleware
+    'django.middleware.csrf.CsrfViewMiddleware',  # CSRF protection middleware
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # Authentication middleware
+    'django.contrib.messages.middleware.MessageMiddleware',  # Messaging middleware
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',  # Clickjacking protection middleware
+    'allauth.account.middleware.AccountMiddleware',  # Allauth account middleware
 ]
 
+# Root URL configuration
 ROOT_URLCONF = 'jobs_platform.urls'
 
+# Template settings
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
-        'APP_DIRS': True,
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',  # Template backend
+        'DIRS': [TEMPLATES_DIR],  # Directories for templates
+        'APP_DIRS': True,  # Include app directories
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.debug',  # Debug context processor
+                'django.template.context_processors.request',  # Request context processor
+                'django.contrib.auth.context_processors.auth',  # Auth context processor
+                'django.contrib.messages.context_processors.messages',  # Messaging context processor
             ],
         },
     },
 ]
 
+# WSGI application configuration
 WSGI_APPLICATION = 'jobs_platform.wsgi.application'
 
-
-# Database
+# Database configuration
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # DATABASES = {
@@ -109,10 +127,12 @@ WSGI_APPLICATION = 'jobs_platform.wsgi.application'
 #    }
 # }
 
+# Use dj_database_url to parse the database URL from environment variables
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
+# CSRF trusted origins for added security
 CSRF_TRUSTED_ORIGINS = [
     "https://8000-tochibot-djangojobboard-51hlrq7hots.ws.codeinstitute-ide.net",
     "https://jango-job-board-bc5be9075c6b.herokuapp.com"
@@ -123,47 +143,63 @@ CSRF_TRUSTED_ORIGINS = [
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # Prevents using similar attributes for passwords
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # Ensures a minimum length for passwords
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # Prevents using common passwords
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # Prevents using numeric passwords
     },
 ]
 
+# Allauth setting to disable email verification
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
+# Language code for the project
 LANGUAGE_CODE = 'en-us'
 
+# Time zone for the project
 TIME_ZONE = 'UTC'
 
+# Enable internationalization
 USE_I18N = True
 
+# Enable time zone support
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# URL for static files
 STATIC_URL = 'static/'
+
+# Static files storage using Cloudinary
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+# Directories for static files
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+# Root directory for static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
+# Root directory for media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# URL for media files
 MEDIA_URL = '/media/'
+
+# Default storage for media files using Cloudinary
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+# Default auto field for models
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

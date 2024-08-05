@@ -1,131 +1,90 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome Anthony Nwadinobi,
+### README  for Django Job Board Platform
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+**Project Name: Django Job Board Platform**
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+**Description:**
+The Django Job Board Platform is a web application designed to facilitate the connection between job seekers and employers. Built with Django, this platform allows users to create profiles, post job listings, apply for jobs, and manage applications.
 
-## Gitpod Reminders
+### Features
+- **User Authentication**: Register, log in, and manage sessions.
+- **Profile Management**: Users can create and update their profiles, including uploading resumes and adding skills.
+- **Job Listings**: Employers can post job vacancies with details such as job description, requirements, and location.
+- **Job Applications**: Job seekers can view listings and submit applications directly through the platform.
+- **Communication Tools**: Built-in messaging system for users to communicate.
+- **Admin Panel**: For managing users, job postings, applications, and site settings.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### Technologies Used
+- **Django**: Web framework for building the platform.
+- **PostgreSQL**: Database system for storing user and job data.
+- **Bootstrap**: Front-end framework for responsive design.
+- **JavaScript**: Enhancements and interactivity on the client side.
+- **Heroku**: Cloud platform for hosting the application.
 
-`python3 -m http.server`
+### User Stories
 
-A blue button should appear to click: _Make Public_,
+**Job Seeker:**
+- As a job seeker, I want to register and create my profile so that I can apply for jobs.
+- As a job seeker, I want to search and filter job listings to find positions that match my skills.
+- As a job seeker, I want to apply for jobs directly on the platform to streamline my job search process.
 
-Another blue button should appear to click: _Open Browser_.
+**Employer:**
+- As an employer, I want to post job vacancies to find suitable candidates.
+- As an employer, I want to review applications and manage candidates to fill my open positions efficiently.
+- As an employer, I want to communicate with job seekers to discuss their applications.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+**Admin:**
+- As an admin, I want to manage all user accounts and postings to maintain the integrity of the platform.
 
-A blue button should appear to click: _Make Public_,
+### Entity-Relationship Diagram (ERD)
+Please refer to the ERD included in the project repository for a detailed overview of the database schema. This diagram illustrates how entities like Users, Profiles, Job Listings, and Applications are interconnected.
 
-Another blue button should appear to click: _Open Browser_.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+<a class="nav-link" href="https://app.diagrams.net/">JobPortal ERD</a>
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Installation Instructions
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/tochi-bot/Django-portal-jobs
+   cd django-job-board
+   ```
 
-### Connecting your Mongo database
+2. **Set up a virtual environment:**
+   ```bash
+  `
+   ```
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+3. **Install dependencies:**
+   ```bash
+   pip3 install -r requirements.txt
+   ```
 
-------
+4. **Set up the database:**
+   ```bash
+   python3 manage.py makemigrations
+   python3 manage.py migrate
+   ```
 
-## Release History
+5. **Create a superuser:**
+   ```bash
+   python manage.py createsuperuser
+   ```
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+6. **Run the development server:**
+   ```bash
+   python3 manage.py runserver
+   ```
 
-**June 18, 2024,** Add Mongo back into template
+   
+  **ALLOWED_HOSTS** = [
+    'django-job-board.herokuapp.com',
+    'localhost',
+    '8000-tochibot-djangojobboard-51hlrq7hots.ws.codeinstitute-ide.net',
+    'jango-job-board-bc5be9075c6b.herokuapp.com'
+]
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+7. **Visit admin panel:**
+   Navigate to `https://8000-tochibot-djangojobboard-51hlrq7hots.ws.codeinstitute-ide.net/admin` to manage the application through Django’s admin panel.
 
-**May 28 2024:** Fix Mongo and Links installs
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!

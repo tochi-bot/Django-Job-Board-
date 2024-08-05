@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import JobSeekerProfile, EmployerProfile, JobListing, Application
+from .models import JobSeekerProfile, EmployerProfile, JobListing, Application, Notification, Message
 from .forms import JobSeekerProfileForm
 
 class JobSeekerProfileAdmin(admin.ModelAdmin):
@@ -20,3 +20,7 @@ admin.site.register(JobSeekerProfile, JobSeekerProfileAdmin)
 admin.site.register(EmployerProfile)
 admin.site.register(JobListing)
 admin.site.register(Application)
+admin.site.register(Notification)
+admin.site.register(Message)
+
+

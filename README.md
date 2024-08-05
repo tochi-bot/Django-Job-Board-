@@ -41,7 +41,7 @@ Please refer to the ERD included in the project repository for a detailed overvi
 
 
 
-<a class="nav-link" href="https://app.diagrams.net/">JobPortal ERD</a>
+<a class="nav-link" href="https://app.diagrams.net/?title=Copy%20of%20jobsPortal.drawio&client=1">JobPortal ERD</a>
 
 ### Installation Instructions
 

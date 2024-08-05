@@ -39,8 +39,7 @@ The Django Job Board Platform is a web application designed to facilitate the co
 ### Entity-Relationship Diagram (ERD)
 Please refer to the ERD included in the project repository for a detailed overview of the database schema. This diagram illustrates how entities like Users, Profiles, Job Listings, and Applications are interconnected.
 
-
-<img src="{% static 'images/DjangoJobsBoard.png' %}">
+![DjangoJobsBoard](https://github.com/user-attachments/assets/5525f483-e9fc-40d4-a46c-4b823d6ddf77)
 
 
 ### Installation Instructions

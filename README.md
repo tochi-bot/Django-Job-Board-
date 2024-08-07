@@ -69,7 +69,7 @@ Please refer to the ERD included in the project repository for a detailed overvi
 
 5. **Create a superuser:**
    ```bash
-   python manage.py createsuperuser
+   python3 manage.py createsuperuser
    ```
 
 6. **Run the development server:**
@@ -88,3 +88,33 @@ Please refer to the ERD included in the project repository for a detailed overvi
 7. **Visit admin panel:**
    Navigate to `https://8000-tochibot-djangojobboard-51hlrq7hots.ws.codeinstitute-ide.net/admin` to manage the application through Django’s admin panel.
 
+### Acknowledgments
+   Django Documentation
+   Bootstrap
+   Font Awesome
+   Code Institute Molules on Django, CSS
+   W3School.com
+   Unsplash
+
+### Challenges Faced
+## Setting Up User Authentication
+**Issue:**
+Integrating Django's built-in authentication system and customizing it to fit the project's requirements was challenging, particularly in managing user roles (job seekers and employers).
+**Solution:**
+Research and Documentation: Extensively read Django documentation on authentication and authorization.
+
+## Challenge 2: Handling File Uploads (CV Uploads)
+**Issue:**
+Ensuring that the file uploads (like CVs) are handled securely and are stored correctly was a key concern.
+**Solution:**
+Media Settings: Configured Django settings to handle media files, including setting up MEDIA_URL and MEDIA_ROOT.
+
+Validation: Implemented validation on file uploads to ensure only specific file types and sizes are accepted.
+
+### Challenge 3: Database Migrations
+**Issue**
+Managing database migrations, especially with frequent changes to models, led to conflicts and inconsistent database states.
+**Solution:**
+Frequent Migrations: Created and applied migrations frequently to minimize the risk of conflicts.
+
+Resetting Migrations: In extreme cases, reset migrations by deleting all migration files and the database, then re-running makemigrations and migrate

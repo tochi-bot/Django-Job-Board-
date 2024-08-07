@@ -1,0 +1,20 @@
+<!-- templates/jobs/employer_list.html -->
+<!-- This template extends the base template and displays a list of employers with links to their details -->
+
+{% extends "base.html" %}
+
+{% block content %}
+  <!-- Heading for the employer list -->
+  <h2>Employers</h2>
+
+  <!-- Unordered list to display employers -->
+  <ul>
+    <!-- Loop through the employers passed to the template -->
+    {% for employer in employers %}
+      <li>
+        <!-- Link to the detail page of each employer -->
+        <a href="{% url 'employer_detail' employer.id %}">{{ employer.company_name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

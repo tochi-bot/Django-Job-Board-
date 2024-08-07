@@ -1,161 +1,315 @@
+/* Body styling */
 body {
-    background-color: #F9FAFC;
+    background-color: #F9FAFC; /* Light background color */
+    font-size: 1.5em; /* Font size */
+    text-align: center; /* Center align all text within the body */
+    text-decoration: none;
 }
 
-.brand {
-    font-family: Lato, sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
+/* Headings styling */
+h1, h2 {
+    color: #E84610; /* Red color for headings */
+    text-align: center; /* Center align the headings */
+    text-transform: capitalize; /* Capitalize the first letter of each word */
 }
 
-.red-o {
-    color: #E84610;
+p {
+    text-align: center; /* Center align all paragraph text */
 }
 
-.thin {
-    font-weight: 300;
+
+/* Specific h2 styling inside a div */
+div > h2 {
+    color: #E84610; /* Red color */
+    text-transform: capitalize; /* Capitalize the first letter of each word */
 }
 
-.light-bg {
-    background-color: #fff;
+/* Paragraph styling */
+p {
+    display: block; /* Block display for paragraphs */
+    margin-block-start: 1em; /* Margin at the start of the block */
+    margin-block-end: 1em; /* Margin at the end of the block */
+    margin-inline-start: 0px; /* No margin on the left */
+    margin-inline-end: 0px; /* No margin on the right */
+    background-position: center; /* Center the background */
 }
 
-.dark-bg {
-    background-color: #445261;
-}
-
-.main-bg {
-    background-color: #F9FAFC;
-}
-
-.card {
-    border: none;
-    background-color: transparent;
-}
 
 .image-container {
-    position: relative;
+    text-align: center; /* Center the image horizontally */
+    margin: 20px 0; /* Add some margin above and below the image */
 }
 
+.image-container img {
+    border-radius: 8px; /* Add rounded corners to the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*  Add a subtle shadow */
+}
+
+
+/* Submit button styling in forms */
+form > button[type=submit] {
+    background-color: orange; /* Orange background for submit button */
+    text-align: center;
+}
+
+/* Branding styling */
+.brand {
+    font-family: Lato, sans-serif; /* Font family */
+    font-size: 1.4rem; /* Font size */
+    font-weight: 700; /* Bold text */
+    color: #4A4A4F; /* Dark color */
+}
+
+/* Red color for 'o' in branding */
+.red-o {
+    color: #E84610; /* Red color */
+}
+
+/* Thin font weight for branding */
+.thin {
+    font-weight: 300; /* Light font weight */
+}
+
+/* Light background color */
+.light-bg {
+    background-color: #fff; /* White background */
+}
+
+/* Dark background color */
+.dark-bg {
+    background-color: #445261; /* Dark background */
+}
+
+/* Main background color */
+.main-bg {
+    background-color: #F9FAFC; /* Light background color */
+}
+
+/* Card styling */
+.card {
+    border: none; /* No border */
+    background-color: transparent; /* Transparent background */
+}
+
+/* Navigation link styling */
+.nav-link {
+    margin: 5px 10px; /* Margin around the links */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px 15px; /* Padding inside the links */
+    border: 1px solid gold; /* Gold border */
+}
+
+/* Image container styling */
+.image-container {
+    position: relative; /* Relative positioning */
+}
+
+/* Image flash styling */
 .image-flash {
-    position: absolute;
-    bottom: 5%;
-    min-width: 30%;
-    left: -2px;
-    background-color: #188181;
+    position: absolute; /* Absolute positioning */
+    bottom: 5%; /* Position from the bottom */
+    min-width: 30%; /* Minimum width */
+    left: -2px; /* Position from the left */
+    background-color: #188181; /* Background color */
 }
 
+/* Scale image */
 .scale {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Full width */
+    height: auto; /* Auto height */
 }
 
+/* Author styling */
 .author {
-    color: white;
-    margin: 4px;
-    text-transform: uppercase;
+    color: white; /* White text */
+    margin: 4px; /* Margin around the text */
+    text-transform: uppercase; /* Uppercase text */
 }
 
+/* Masthead styling */
 .masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
+    margin-top: 10px; /* Margin at the top */
+    overflow: hidden; /* Hide overflow */
+    position: relative; /* Relative positioning */
+    display: inline-block; /* Inline-block display */
+    height: 33vh; /* 33% of viewport height */
+    width: 100%; /* Full width */
 }
 
+/* Masthead text styling */
 .masthead-text {
-    background-color: #445261;
-    color: white;
-    position: relative;
+    background-color: #445261; /* Dark background */
+    color: white; /* White text */
+    position: relative; /* Relative positioning */
 }
 
+/* Masthead image styling */
 .masthead-image {
-    position: relative;
-    overflow: hidden;
+    position: relative; /* Relative positioning */
+    overflow: hidden; /* Hide overflow */
 }
 
+/* Masthead image pseudo-element */
 .masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #445261;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
+    content: ""; /* Empty content */
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Position at the top */
+    right: 90%; /* Position from the right */
+    height: 100%; /* Full height */
+    width: 150%; /* 150% width */
+    background: #445261; /* Dark background */
+    transform: skew(15deg); /* Skew transformation */
+    z-index: 100; /* Z-index for layering */
 }
 
+/* Post link styling */
 .post-link {
-    text-decoration: none;
-    color: #445261;
+    text-decoration: none; /* No underline */
+    color: #445261; /* Dark color */
 }
 
+/* Post link hover and active styling */
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #E84610; /* Red color */
 }
 
+/* Post title styling */
 .post-title {
-    margin-top: 10%;
-    margin-left: 5%;
+    margin-top: 10%; /* Margin at the top */
+    margin-left: 5%; /* Margin on the left */
 }
 
+/* Post subtitle styling */
 .post-subtitle {
-    margin-left: 5%;
-    color: lightgray;
+    margin-left: 5%; /* Margin on the left */
+    color: lightgray; /* Light gray color */
 }
 
+/* Primary button styling */
+.btn-primary {
+    background-color: orange; /* Orange background */
+}
+
+/* Signup and edit button styling */
 .btn-signup,
 .btn-edit {
-    background-color: #188181;
-    color: #fff;
+    background-color: #188181; /* Teal background */
+    color: #fff; /* White text */
 }
 
+/* Signup button hover and active styling */
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #fff; /* White background */
+    color: #23BBBB; /* Teal text */
 }
 
+/* Link styling */
 .link {
-    color: #23BBBB;
-    text-decoration: none;
+    color: #23BBBB; /* Teal color */
+    text-decoration: none; /* No underline */
 }
 
+/* Link hover and active styling */
 .link:hover,
 .link:active {
-    color: #445261;
-    text-decoration: underline;
+    color: #445261; /* Dark color */
+    text-decoration: underline; /* Underline text */
 }
 
+/* Like button styling */
 .btn-like {
-    color: #E84610;
-    border: none;
-    background: transparent;
+    color: #E84610; /* Red color */
+    border: none; /* No border */
+    background: transparent; /* Transparent background */
 }
 
+/* Delete button styling */
 .btn-delete {
-    color: #fff;
-    background: #E84610;
+    color: #fff; /* White text */
+    background: #E84610; /* Red background */
 }
 
+/* Like button hover and active styling */
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
-    background: transparent;
-    border: none;
+    color: #E84610; /* Red color */
+    background: transparent; /* Transparent background */
+    border: none; /* No border */
 }
 
+/* Faded text styling */
 .faded {
-    color: rgb(172, 175, 175);
+    color: rgb(172, 175, 175); /* Gray color */
 }
 
+/* Approval text styling */
 .approval {
-    color: rgb(222, 146, 168);
+    color: rgb(222, 146, 168); /* Pink color */
+}
+
+/* Lead text styling */
+.lead {
+    color: maroon; /* Maroon color */
+    text-align: center; /* Center align the text */
+    font-size: 1.25rem; /* Font size */
+    font-weight: 300; /* Light font weight */
+}
+
+/* General form styling */
+form {
+    max-width: 600px; /* Maximum width for the form */
+    margin: 0 auto; /* Center the form */
+    padding: 20px; /* Padding around the form */
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+/* Label styling */
+.form-group label {
+    display: block; /* Labels should be block elements */
+    margin-bottom: 5px; /* Space below labels */
+    font-weight: bold; /* Bold text for labels */
+}
+
+/* Input and textarea styling */
+.form-control,
+.form-control-file {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+/* Input focus styling */
+.form-control:focus,
+.form-control-file:focus {
+    border-color: #007bff; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow on focus */
+}
+
+/* Form container styling */
+.form-container {
+    display: flex;
+    justify-content: center; /* Center the form container */
+    align-items: center; /* Center items vertically */
+    height: 100vh; /* Full viewport height */
+}
+
+
+/* Centering text within buttons */
+button,
+input[type="submit"],
+input[type="button"] {
+    text-align: center; /* Center align button text */
 }

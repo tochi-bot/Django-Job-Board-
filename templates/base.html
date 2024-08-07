@@ -31,9 +31,6 @@
         <!-- Navigation bar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="{% url 'index' %}"> <span class="brand">code<span class="red-o">o</span>star<span class="thin"></span></span>Job Board Platform</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
@@ -42,14 +39,14 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{% url 'about' %}">About <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{% url 'job_list' %}">Jobs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'employer_profile_list' %}">Employers Profile</a>
+                        <a class="nav-link" href="{% url 'employer_list' %}">Employers Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'job_seeker_profile' %}">Appicant Profile</a>
+                        <a class="nav-link" href="{% url 'job_seeker_profile' %}">Applicant Profile</a>
                     </li>
                     <!-- Conditional links if user is authenticated -->
                     
@@ -70,16 +67,11 @@
             </div>
         </nav>
     </header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-            <img src="{% static 'images/djangoJobs.jpg' %}" class="container-fluid" alt="djangoJobs!">
-            <a class="navbar-brand" href="{% url 'index' %}"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+    
+    <!-- Image container -->
+    <div class="image-container">
+        <img src="{% static 'images/djangoJobs.jpg' %}" class="img-fluid" alt="Django Jobs">
+    </div>
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
@@ -89,11 +81,28 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
+        <!-- Footer text indicating the creator -->
         <p class="m-0 text-center text-white">Made by Anthony Nwadinobi</p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i>
+    
+        <!-- Social media follow section -->
+        <p class="m-0 text-center text-white">
+            Follow us: 
+            <!-- Facebook icon with link -->
+            <a href="https://www.facebook.com/" class="text-white ms-3" target="_blank">
+                <i class="fab fa-facebook-square"></i>
+            </a>
+            <!-- Twitter icon with link -->
+            <a href="https://twitter.com/" class="text-white ms-3" target="_blank">
+                <i class="fab fa-twitter-square"></i>
+            </a>
+            <!-- Instagram icon with link -->
+            <a href="https://www.instagram.com/" class="text-white ms-3" target="_blank">
+                <i class="fab fa-instagram-square"></i>
+            </a>
+            <!-- YouTube icon with link -->
+            <a href="https://www.youtube.com/" class="text-white ms-3" target="_blank">
+                <i class="fab fa-youtube-square"></i>
+            </a>
         </p>
     </footer>
 

@@ -1,14 +1,20 @@
 {% extends "base.html" %}
+<!-- This template extends the base template and displays a list of job listings -->
 
 {% block content %}
+  <!-- Heading for the job listings page -->
   <h2>Job Listings</h2>
+  
+  <!-- Unordered list to display the jobs -->
   <ul>
+    <!-- Loop through the jobs passed to the template -->
     {% for job in jobs %}
       <li>
+        <!-- Link to the detail page of each job -->
         <a href="{% url 'job_listing_detail' job.id %}">{{ job.title }}</a>
+        <!-- Display the job location -->
         - {{ job.location }}
       </li>
     {% endfor %}
   </ul>
 {% endblock %}
-

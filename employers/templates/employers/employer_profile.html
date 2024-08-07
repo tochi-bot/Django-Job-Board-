@@ -1,16 +1,20 @@
-{% extends "base.html" %}
 
-{% block content %}
-  <h2>{{ employer.company_name }}</h2>
-  <p>{{ employer.description }}</p>
-  <h3>Job Listings</h3>
-  <ul>
-    {% for job in job_listings %}
-      <li>
-        <a href="{% url 'job_listing_detail' job.id %}">{{ job.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% endblock %}
+
+{% extends "base.html" %} <!-- Extends the base template -->
+
+{% block content %} <!-- Defines the content block that will be inserted into the base template -->
+<div class="container">
+    <!-- Page Header -->
+    <h1 class="my-4">{{ profile.company_name }}</h1> <!-- Displays the company name -->
+        
+    <!-- Company Description -->
+    <p>{{ profile.description }}</p> <!-- Displays the company description -->
+        
+    <!-- Back to profiles list link -->
+    <a class="btn btn-primary" href="{% url 'employer_profile_list' %}">Back to profiles list</a> <!-- Link to the profiles list -->
+  
+    
+</div>
+{% endblock %} <!-- Ends the content block -->
 
 

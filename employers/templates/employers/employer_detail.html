@@ -1,14 +1,14 @@
-<!-- templates/jobs/job_detail.html -->
+<!-- templates/employers/job_detail.html -->
+<!-- This template extends the base template and displays job details along with an application form -->
+
 {% extends "base.html" %}
-<!-- This template extends the base template and provides details of a specific job along with an application form -->
 
 {% block content %}
   <!-- Job title -->
   <h2>{{ job.title }}</h2>
+
   <!-- Job description -->
   <p>{{ job.description }}</p>
-  <!-- Job location -->
-  <p>Location: {{ job.location }}</p>
 
   <!-- Application section -->
   <h3>Apply for this job</h3>
@@ -18,6 +18,24 @@
     <!-- CSRF token for security -->
     {% csrf_token %}
     
+    <!-- Company Name field -->
+    <div class="form-group">
+      <label for="id_company_name">Company Name</label>
+      <input type="text" name="company_name" id="id_company_name" class="form-control" value="{{ form.company_name.value }}">
+    </div>
+    
+    <!-- Website field -->
+    <div class="form-group">
+      <label for="id_website">Website</label>
+      <input type="url" name="website" id="id_website" class="form-control" value="{{ form.website.value }}">
+    </div>
+    
+    <!-- Description field -->
+    <div class="form-group">
+      <label for="id_description">Description</label>
+      <textarea name="description" id="id_description" class="form-control">{{ form.description.value }}</textarea>
+    </div>
+
     <!-- Applicant Name field -->
     <div class="form-group">
       <label for="id_applicant_name">Name</label>

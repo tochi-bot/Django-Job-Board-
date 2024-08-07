@@ -1,10 +1,40 @@
 {% extends "base.html" %}
+<!-- This template extends the base template and provides a form for applying to a specific job -->
 
 {% block content %}
+  <!-- Heading that includes the job title -->
   <h2>Apply for {{ job.title }}</h2>
-  <form method="post">
+
+  <!-- Form for submitting a job application -->
+  <form method="post" enctype="multipart/form-data">
+    <!-- CSRF token for security -->
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit Application</button>
+    
+    <!-- Applicant Name field -->
+    <div class="form-group">
+      <label for="id_applicant_name">Name</label>
+      <input type="text" name="applicant_name" id="id_applicant_name" class="form-control">
+    </div>
+    
+    <!-- Applicant Email field -->
+    <div class="form-group">
+      <label for="id_applicant_email">Email</label>
+      <input type="email" name="applicant_email" id="id_applicant_email" class="form-control">
+    </div>
+    
+    <!-- Cover Letter field -->
+    <div class="form-group">
+      <label for="id_cover_letter">Cover Letter</label>
+      <textarea name="cover_letter" id="id_cover_letter" class="form-control"></textarea>
+    </div>
+    
+    <!-- CV Upload field -->
+    <div class="form-group">
+      <label for="id_cv">Upload CV</label>
+      <input type="file" name="cv" id="id_cv" class="form-control-file">
+    </div>
+
+    <!-- Submit button for the application form -->
+    <button type="submit" class="btn btn-primary">Submit Application</button>
   </form>
 {% endblock %}

@@ -1,16 +1,29 @@
 {% extends "base.html" %}
+<!-- This template extends the base template and provides a chat interface with another user -->
 
 {% block content %}
+  <!-- Heading that includes the receiver's username -->
   <h2>Chat with {{ receiver.username }}</h2>
+
+  <!-- Chat messages section -->
   <div>
+    <!-- Loop through the messages passed to the template -->
     {% for message in messages %}
+      <!-- Display each message with sender's username, message content, and sent time -->
       <p><strong>{{ message.sender.username }}:</strong> {{ message.content }} <small>({{ message.sent_at }})</small></p>
     {% endfor %}
   </div>
+
+  <!-- Form for sending a new message -->
   <form method="post">
+    <!-- CSRF token for security -->
     {% csrf_token %}
+    <!-- Display the form fields as paragraphs -->
     {{ form.as_p }}
+    <!-- Submit button for sending the message -->
     <button type="submit">Send</button>
   </form>
+
+  <!-- Link to go back to the job listing detail page -->
   <a href="{% url 'job_listing_detail' job_listing.id %}">Back to job listing</a>
 {% endblock %}

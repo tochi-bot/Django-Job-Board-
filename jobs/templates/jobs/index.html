@@ -1,11 +1,24 @@
 <!-- templates/index.html -->
+<!-- This template extends the base template and serves as the homepage for the Job Board Platform -->
+
 {% extends "base.html" %}
+
 {% block content %}
+    <!-- Jumbotron section to welcome users -->
     <div class="jumbotron">
+        <!-- Main welcome heading -->
         <h1>Welcome to the Job Board Platform!</h1>
+        
+        <!-- Lead paragraph for a brief introduction -->
         <p class="lead">Find your dream job or hire top talent today.</p>
+        
+        <!-- Horizontal line for separation -->
         <hr class="my-4">
+        
+        <!-- Additional information paragraph -->
         <p>Browse job listings or create your job seeker profile to start applying.</p>
+        
+        <!-- Button to browse job listings -->
         <a class="btn btn-primary btn-lg" href="{% url 'job_list' %}" role="button">Browse Jobs</a>
     </div>
 {% endblock %}

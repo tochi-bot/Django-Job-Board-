@@ -5,6 +5,8 @@
 
 **Description:**
 The Django Job Board Platform is a web application designed to facilitate the connection between job seekers and employers. Built with Django, this platform allows users to create profiles, post job listings, apply for jobs, and manage applications.
+![djangojobs1](https://github.com/user-attachments/assets/a5de4741-77ef-463c-8299-09bd120b6639)
+![djangojobsabout](https://github.com/user-attachments/assets/0c4816a2-5e3f-4141-bef0-41e86a93fec4)
 
 ### Features
 - **User Authentication**: Register, log in, and manage sessions.
